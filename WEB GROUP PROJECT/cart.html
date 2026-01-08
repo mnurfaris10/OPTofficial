@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - OnePlusTwo</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+    }
+    .navbar a {
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .cart-container {
+      margin: 20px auto;
+      max-width: 900px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .cart-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .cart-header h2 {
+      font-size: 28px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .cart-item img {
+      max-width: 80px;
+      border-radius: 8px;
+    }
+    .cart-item-details {
+      flex: 1;
+      margin-left: 15px;
+    }
+    .cart-summary {
+      text-align: right;
+      margin-top: 20px;
+    }
+    .cart-summary h3 {
+      font-size: 20px;
+    }
+    .checkout-button {
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .checkout-button:hover {
+      background-color: #555;
+    }
+  </style>
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartContainer = document.getElementById('cartItems');
+      const totalPriceEl = document.getElementById('totalPrice');
+
+      cartContainer.innerHTML = '';
+      let totalPrice = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        totalPriceEl.innerText = 'RM 0.00';
+        return;
+      }
+
+      cart.forEach(item => {
+        totalPrice += item.price * item.quantity;
+
+        cartContainer.innerHTML += `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+              <h4>${item.name}</h4>
+              <p>Size: ${item.size}</p>
+              <p>Quantity: ${item.quantity}</p>
+              <p>Price: RM${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      totalPriceEl.innerText = `RM ${totalPrice.toFixed(2)}`;
+    }
+
+    function proceedToCheckout() {
+      window.location.href = 'checkout.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', loadCart);
+  </script>
+</head>
+<body>
+  
+  <div class="navbar">
+    <a href="optworldwideshop.html">Shop</a>
+    <a href="cart.html">Cart</a>
+  </div>
+
+  
+  <div class="cart-container">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-summary">
+      <h3>Total: <span id="totalPrice">RM 0.00</span></h3>
+      <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+  </div>
+</body>
+</html>

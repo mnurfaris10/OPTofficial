@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Your Purchase</title>
+  
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0a0a; /* Dark background */
+      color: #d1d1d1; /* Soft gray text */
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #ffcc00; /* Gold accent */
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .slogan {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #d1d1d1;
+      margin-top: 40px;
+      letter-spacing: 1px;
+    }
+
+    .return-btn {
+      background: #ffcc00; /* Luxurious Gold */
+      color: #000;
+      font-size: 1.2rem;
+      padding: 15px 50px;
+      border: none;
+      border-radius: 50px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: 0.3s ease;
+    }
+
+    .return-btn:hover {
+      background: #ff9900;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .gold-star {
+      font-size: 4rem;
+      color: #ffcc00;
+      animation: shine 1.5s infinite ease-in-out;
+    }
+
+    @keyframes shine {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .line {
+      width: 60px;
+      height: 4px;
+      background: #ffcc00;
+      margin: 30px auto;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Thank You for Your Purchase!</h1>
+  <p>Your order is being processed, and we will notify you shortly once it's on the way.</p>
+  <div class="gold-star">🌟</div>
+  <div class="line"></div>
+  <p class="slogan">"OPT - Luxury in Every Thread."</p>
+  <button class="return-btn" onclick="goToHomepage()">Return to Homepage</button>
+</div>
+
+<script>
+  function goToHomepage() {
+    window.location.href = "optworldwideshop.html";
+  }
+</script>
+
+</body>
+</html>
